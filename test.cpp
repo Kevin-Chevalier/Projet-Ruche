@@ -36,13 +36,13 @@ int main(int argc, char* argv[]) {
     stmt = connection->createStatement();
 
     // creation de la base 'Valeurs' si elle n'existe pas
-    stmt->execute("CREATE DATABASE IF NOT EXISTS Valeurs");
+    // stmt->execute("CREATE DATABASE IF NOT EXISTS Valeurs");
 
     // selectionne la base Valeurs
-    stmt->execute("USE Valeurs");
+    //stmt->execute("USE Valeurs");
 
     //creation de la table temperature si elle n'existe pas
-    stmt->execute("CREATE TABLE IF NOT EXISTS temperature ( id int(11) NOT NULL AUTO_INCREMENT, valeur float NOT NULL, date datetime NOT NULL, PRIMARY KEY (id))");
+    //stmt->execute("CREATE TABLE IF NOT EXISTS temperature ( id int(11) NOT NULL AUTO_INCREMENT, valeur float NOT NULL, date datetime NOT NULL, PRIMARY KEY (id))");
 
     // insertion d'une valeur dans la table temperature
     ostringstream sql;
