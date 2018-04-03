@@ -17,6 +17,7 @@
 #include <sstream>
 #include <iomanip>
 #include "cppconn/driver.h"
+#include "config.h"
 #include "cppconn/connection.h"
 #include <cppconn/statement.h>
 
@@ -25,28 +26,23 @@ using namespace std;
 using namespace sql;
 
 int main(int argc, char* argv[]) {
+
     Driver* driver;
     Connection* connection;
     Statement *stmt;
  
 
     driver = get_driver_instance();
-    connection = driver -> connect("172.18.58.89", "ruche", "Touchard72");
+    connection = driver -> connect(IPSERVEUR, UTILISATEUR, MDP);
 
     stmt = connection->createStatement();
 
-    // creation de la base 'Valeurs' si elle n'existe pas
-    // stmt->execute("CREATE DATABASE IF NOT EXISTS Valeurs");
-
-    // selectionne la base Valeurs
-    //stmt->execute("USE Valeurs");
-
-    //creation de la table temperature si elle n'existe pas
-    //stmt->execute("CREATE TABLE IF NOT EXISTS temperature ( id int(11) NOT NULL AUTO_INCREMENT, valeur float NOT NULL, date datetime NOT NULL, PRIMARY KEY (id))");
+    // selectionne la base de données ruche
+    stmt->execute("USE ruche");
 
     // insertion d'une valeur dans la table temperature
     ostringstream sql;
-    sql << "INSERT INTO temperature(date, valeur) VALUES (CURRENT_TIMESTAMP," <<  21.00 << ")";
+    sql << "INSERT INTO mesures(date, tempval, ruches_idRuches) VALUES (CURRENT_TIMESTAMP," <<  51.00 << "," << IDRUCHE << ")";
     stmt->execute(sql.str());
 
     delete stmt;
