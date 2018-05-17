@@ -1,0 +1,102 @@
+ /* Remove the navbar's default margin-bottom and rounded borders */
+body {
+    
+  margin:0;
+  padding:0;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.15), 
+      rgba(0, 0, 0, 0.15)
+    ),url(http://blog.hdwallsource.com/wp-content/uploads/2015/04/hdr-nature-wallpaper-38282-39157-hd-wallpapers.jpg) no-repeat center fixed;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+
+    } 
+    .contenu {
+    margin-right:40px;
+    margin-left: 40px;
+
+}
+    #titre h1 {
+        
+        margin-bottom: 200px;
+        padding-top:   200px;
+        color: #fff;
+        font-family: "Source Sans Pro" , sans-serif;
+        
+        font-weight: 900;
+        font-style: normal;
+        font-size: 62px;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.055em;
+        cursor: default;
+        text-align: center;
+        
+    }
+    
+.iconFleche{
+        
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50px;
+padding-top: 60px;
+    }
+    
+    .miel{
+        
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 60px;
+padding-top: 0px;
+    }
+   
+    
+  
+    
+    
+.navbar {
+                  margin-bottom: 0;
+                  border-radius: 0;
+                }
+
+                /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+                .row.content {height: 450px}
+
+                /* Set gray background color and 100% height */
+                .tab1 {
+                 padding-top: 0px;
+                 padding-left: 0px;
+                 padding-right: 0px;
+                 padding-bottom: 20px;
+                 background-color: #f1f1f1;
+                }
+
+                /* Set black background color, white text and some padding */
+                footer {
+                  color: white;
+                  padding: 15px;
+                }
+
+                /* On small screens, set height to 'auto' for sidenav and grid */
+                @media screen and (max-width: 767px) {
+                  .sidenav {
+                    height: auto;
+                    padding: 15px;
+                  }
+                  .row.content {height:auto;
+                  } 
+                }
+
+                .numColor {
+                    margin-top: 20px;
+                    color : #DF7401;
+                    
+                }
+
+.alert-warning {
+    color: #DF7401;
+    background-color: #ffd83b1a;
+    border-color: #e8af2acc;
+}
