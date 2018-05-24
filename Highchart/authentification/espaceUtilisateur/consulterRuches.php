@@ -19,11 +19,39 @@ require '../../corpsPages/header.php';
 
 <br><br>
  <!-------------------------------------------------- CONSULTER RUCHES ---------------------------------------------------------->
+Données météo éxterieur (OpenWeather)</br>
+<center>
 
-ruche 1 ruche 2
-
+<table border="1" class="table table-dark">
+    
+        <tr>
+            <td>La température :</td>
+            <td></td>
+        </tr>
+    
+    
+        <tr>
+            <td>Le vent en m/s :</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>La pression atmosphérique en hPa :</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>L’humidité :</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>La précipitation  :</td>
+            <td></td>
+        </tr>
+    
+</table>
+</center>
   
 <?php require '../../corpsPages/footer.php'; ?>
+
 
 
 

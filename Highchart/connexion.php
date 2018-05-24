@@ -8,8 +8,8 @@
 ------------------------------------------------------------------------------------>
 
 <?php
-
-if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){
+$message = array();
+if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){ // si post = n'est pas vide lancer l'execution
  require_once 'authentification/connexionBDD.php';
  require_once 'authentification/espaceUtilisateur/functions.php';
  
@@ -25,15 +25,29 @@ if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){
         exit();
         
     }else{
-        $_SESSION['flash']['danger'] = 'Incorrect ! Vérifiez votre identifiant et mot de passe.';
-       
+
+   $message['erreurConnexion']= "Mot de passe ou identifiant inexistant.";
+
     }
 }
+
+
+require 'corpsPages/header.php';
 ?>
 
-<?php require 'corpsPages/header.php'; ?>    
-                <h1>Connexion</h1>
-        
+   
+                <h1>Connexion</h1><br>
+        <?php if(!empty($message)): ?>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6 alert alert-warning text-center numColor">
+            <ul>
+                <?php foreach($message as $error): ?>
+                <?= $error; ?><br/>
+                <?php endforeach; ?>    
+            </ul>
+        </div>
+    </div>    
+<?php endif; ?>
      <center class="numColor">  </center><br><br>
      <form class="form-horizontal" action="" method="POST">
         <div class="form-group">

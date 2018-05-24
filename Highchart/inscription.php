@@ -1,7 +1,15 @@
+<!----------------------------------------------------------------------------------
+    @fichier  connexion.php							    							|
+    @auteur   Algin TOSHI (Touchard Washington le Mans)								|
+    @date     Avril 2018															|
+  												|
+    @details  Page de demande d'inscription										     		|
+ 																				    |
+------------------------------------------------------------------------------------>
 <?php require 'corpsPages/header.php'; ?>
 
         <h1>Inscription
-        <small> <br/><br/>Merci de renseigner vos informations </small></h1>
+        <h5> <br/><br/>Merci de renseigner vos informations, l'administrateur verifiera les informations </h5></h1>
         <br>
       
         

@@ -1,3 +1,12 @@
+<!----------------------------------------------------------------------------------
+    @fichier  connexion.php							    							|
+    @auteur   Algin TOSHI (Touchard Washington le Mans)								|
+    @date     Avril 2018															|
+    @version  v1.0 - First release													|
+    @details  Page de recuperation du mot de passe										     		|
+ 																				    |
+------------------------------------------------------------------------------------>
+
 <?php require 'corpsPages/header.php'; ?>
 
         <h1>Réinitialiser votre mot de passe <br/><br/><small><h4> Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe. </h4></small></h1>

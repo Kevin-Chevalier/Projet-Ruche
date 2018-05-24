@@ -1,4 +1,12 @@
- /* Remove the navbar's default margin-bottom and rounded borders */
+ 
+    /*fichier  connexion.php							    							
+   /* @auteur   Algin TOSHI (Touchard Washington le Mans)							
+   /* @date     Avril 2018															
+   /* @version  v1.0 - First release													
+   /* @details  Page de connexion											     		
+
+
+/* Remove the navbar's default margin-bottom and rounded borders */
 body {
     
   margin:0;

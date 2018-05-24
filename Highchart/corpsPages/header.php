@@ -1,3 +1,12 @@
+<!----------------------------------------------------------------------------------
+    @fichier  connexion.php							    							|
+    @auteur   Algin TOSHI (Touchard Washington le Mans)								|
+    @date     Avril 2018															|
+    @version  v1.0 - First release													|
+    @details  header /corps de toute les page du site					     		|
+ 																				    |
+------------------------------------------------------------------------------------>
+
 <?php if(session_status()== PHP_SESSION_NONE){
     
         session_start();
@@ -14,8 +23,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="/css_ruche.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="graphique.js" type="text/javascript"></script>
         <link rel="icon" type="image/png" href="https://icon-icons.com/icons2/881/PNG/512/Honey_icon-icons.com_68739.png" />

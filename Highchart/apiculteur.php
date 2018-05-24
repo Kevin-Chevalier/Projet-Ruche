@@ -1,9 +1,9 @@
 <!----------------------------------------------------------------------------------
-    @fichier  apiculteur.php							    							|
+    @fichier  apiculteur.php							    						|
     @auteur   Algin TOSHI (Touchard Washington le Mans)								|
     @date     Avril 2018															|
     @version  v1.0 - First release													|
-    @details  Page protégée pour l'apiculteur                                       |
+    @details  Page de Menu lorsque l'on se connecte                                    |
  																				    |
 ------------------------------------------------------------------------------------>
 <?php 

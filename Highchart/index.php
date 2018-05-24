@@ -20,7 +20,7 @@
 -->                                                                                                                                                                                                                                                                      
 
 
-<?php require 'corpsPages/header.php'; ?>
+<?php require 'corpsPages/header.php'; ?> 
     
     <h1>Présentation du système</h1><br><br>
 	

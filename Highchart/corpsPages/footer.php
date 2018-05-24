@@ -1,3 +1,11 @@
+<!----------------------------------------------------------------------------------
+    @fichier  connexion.php							    							|
+    @auteur   Algin TOSHI (Touchard Washington le Mans)								|
+    @date     Avril 2018															|
+    @version  v1.0 - First release													|
+    @details  pieds de page										     		|
+ 																				    |
+------------------------------------------------------------------------------------>
 </div>
     <div class="col-sm-1 sidenav"></div>
 </div>

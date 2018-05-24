@@ -1,129 +1,110 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 $(function ()
 {
-$("#dateDeDebut, #dateDeFin").datepicker({ //pour mettre les datepicker en français
+    $("#dateDeDebut, #dateDeFin").datepicker({ //pour mettre les datepicker en franÃ§ais
         altField: "#datepicker,",
         closeText: 'Fermer',
-        prevText: 'Précédent',
+        prevText: 'PrÃ©cÃ©dent',
         nextText: 'Suivant',
         currentText: 'Aujourd\'hui',
-        monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-        monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+        monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'AoÃ»t', 'Septembre', 'Octobre', 'Novembre', 'DÃ©cembre'],
+        monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'AoÃ»t', 'Sept.', 'Oct.', 'Nov.', 'DÃ©c.'],
         dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
         dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
         dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
         weekHeader: 'Sem.',
         dateFormat: 'yy-mm-dd'
     });
-    });
+
+    var chart;
+    var couleurs = ["#FF0000", "#FFFF00", "#40FF00", "#00FFFF", "#0000FF", "FF00FF", "000000"];
+    var options = {};
 
 
-$(document).ready(function () {
-  var numeroRuche = $(".numColor").text();
-//RÃ©cupÃ©ration des plans prÃ©sents sur la BDD.
-$.ajax({
-url: 'recuperationInformations.php',
-        type: 'POST',
- data: { numeroRuche: numeroRuche },
-        dataType: 'json',
-        //En cas de sucÃ¨es de la requÃªte, on affiche le retour texte
-        success: function (donnees, status, xhr) {
-                
-                var chart;
-                var couleurs = ["#1f77b4"];
-                var options = {};
-                
+    options.chart = {
+        renderTo: 'graphique',
+        height: 500,
+        marginTop: 70,
+        marginLeft: 100,
+        marginRight: 100,
+        backgroundColor: '#F9F9F9',
+        type:'line'
+    };
 
-                    options.chart = {
-                        renderTo: 'graphique',
-                        height: 600,
-                        marginTop: 70,
-                        marginLeft: 70,
-                        marginRight: 70,
-                        backgroundColor: '#F9F9F9',
-                        type: 'line'
-                };
-                options.credits = {
-                enabled: false
-                };
-                options.colors = couleurs;
-                options.title = {
-                text: " ",
-                        margin: 10
-                };
-                options.tooltip = {
-                    formatter: function () {
-                        return "Date : " + this.x + "<br /> Température : " + this.y + " °c";
-                    }
-                };
-                options.yAxis = [
-                                    {
-                                        title: {
-                                            text: "temperature en °c" //Donne un titre à l'axe des Y
-                                        },
-                                        labels: {
-                                            formatter: function () {
-                                                return this.value; // Affiche les valeur de l'axe Y
-                                            },
-                                            style: {
-                                                color: '#000'
-                                            }
-                                        }
-                                    }
-                                ];
-                                options.xAxis = {
-                                    categories: [],
-                                    crosshair: true,
-                                    labels: {
-                                        rotation: -45,
-                                        y: 20
-                                    }
-                                };
-                                options.series = [
-                                    {
-                                        name: 'temperature °c',
-                                        data: []
-                                    },
-                ];
-                $.getJSON('recuperationInformations.php', function (recuperationInformations) {
-                $.each(recuperationInformations, function (index, ligne) {
-                            options.series[0].data.push(ligne.temperature); //Affichage des données en Y
-                            options.xAxis.categories.push(ligne.date);    //Affichage des données en X
-                });
-                        chart = new Highcharts.Chart(options);
-                });
-                $("#erreur").text("");
-        },
-        error: function (xhr, status, error) {
-        alert("param : " + xhr.responseText);
-                alert("status : " + status);
-                alert("error : " + error);
+    options.credits = {
+        enabled: false
+    };
+
+    options.colors = couleurs;
+    options.title = {
+        text: "Mesures de la ruche",
+        margin: 10
+    };
+
+    options.tooltip = {
+        formatter: function() {
+            return "Date : " + this.x + " Température : " + this.y + " °C" ;
         }
+    };
 
-});
-        var numeroRuche = $(".numColor").text();
-        console.log(numeroRuche);
-        $.ajax({
-        url: 'recuperationEnvoieRuche.php',
-               type: 'POST',
-                data: {
-                    numeroRuche: numeroRuche
+    options.yAxis = [
+        {
+            title : {
+                text: "Temperature"
+            },
+            labels: {
+                formatter: function() {
+                return this.value;
                 },
-                dataType: 'json',
-                success: function(donnees, status, xhr) {
-                     $.each(donnees, function (index, ligne) {
-                 $(".localisation").append("Localisation<br /><u>Longitude :</u> "+ligne.longitude+"°<br /><u>Latitude :</u> "+ligne.latitude+"°<br /><u>Altitude :</u> "+ligne.altitude + " mètres");
-                 });
-               
-                },
-                error: function(xhr, status, error) {
-                alert("param : " + xhr.responseText);
-                alert("status : " + status);
-                alert("error : " + error);
+
+                style: {
+                    color: '#000'
                 }
-        });
+            }
+        },
+
+        {
+            title: {
+                text: "Valeurs2"
+            },
+            labels: {
+                formatter: function() {
+                    return this.value;
+                },
+
+                style: {
+                    color: '#8C564B'
+                }
+            },
+            opposite: true
+        }
+    ];
+
+    options.xAxis = {
+        categories: [],
+        crosshair: true,
+        labels: {
+            rotation: -45,
+            y: 20
+        }
+    };
+
+
+    options.plotOptions = {
+        series: {
+            pointStart: 0
+        }
+    };        
+
+    options.series = [];
+    
+    
+     
+    
+$.getJSON('obtenirValeurs.php', function(valeurs) {
+    console.log(valeurs);
+    options.series = valeurs.series;
+    options.plotOptions.series.pointStart = valeurs.pointStart;
+    chart = new Highcharts.Chart(options);  
+});
+
 });

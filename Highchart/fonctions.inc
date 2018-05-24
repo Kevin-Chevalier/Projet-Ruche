@@ -42,10 +42,12 @@ $requete->bindParam(':idRuche', $numeroRuche);
     }
 }
 
-function recuperationInformations (){
+function recuperationInformations($dateDeDebut, $dateDeFin,$numeroRuche){
     $bdd = connexionBDD();
     if ($bdd != null) {
-        $requete = $bdd->prepare('SELECT *  FROM `mesures`');
+        $requete = $bdd->prepare('SELECT *  FROM `mesures` WHERE `ruches_idRuches` = :idRuche');
+        $requete->bindParam(':idRuche', $numeroRuche);
+
         $requete->execute() or die(print_r($requete->errorInfo()));
         $tabMesures = array();
         while ($ligne = $requete->fetch()) {
