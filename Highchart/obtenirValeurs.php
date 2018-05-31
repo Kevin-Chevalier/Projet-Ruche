@@ -18,7 +18,8 @@ function connexionBDD() {
 
 function obtenirValeur() {
 $bdd = connexionBDD();
- $requete = $bdd->prepare('SELECT *  FROM `mesures` WHERE `ruches_idRuches` = 1');
+ $requete = $bdd->prepare('SELECT *  FROM `mesures` WHERE `ruches_idRuches` = :idRuche');
+$requete->bindParam(':idRuche', $_GET['id']); 
 $requete->execute() or die(print_r($requete->errorInfo()));
 $temperature = array();
 $humidite = array();
@@ -27,6 +28,7 @@ $poids = array();
 $eclairement = array();
 $date = array();
 $datecomp = array();
+
 
 while($ligne = $requete->fetch()){
     array_push($temperature, floatval($ligne['tempval']));
@@ -39,38 +41,48 @@ while($ligne = $requete->fetch()){
 }
 
 $valeurs = array();
-$tooltip[valueSuffix] = " °C";
+$tooltip = array();
+
 
 $series = array();
-$serie['name'] = "Température"; 
+$tooltip['valueSuffix'] = " °C";
+$serie['name'] = "Température";
+$serie['type']  = "spline";
 $serie['tooltip'] = $tooltip;
 $serie['data']  = $temperature;
 array_push($series, $serie);
 
-$serie['name'] = "Humidité"; 
+$tooltip['valueSuffix'] = " %";
+$serie['name'] = "Humidité";
+$serie['type']  = "spline";
 $serie['tooltip'] = $tooltip;
 $serie['data']  = $humidite;
 array_push($series, $serie);
 
-$serie['name'] = "Pression"; 
+$tooltip['valueSuffix'] = " hPa";
+$serie['name'] = "Pression";
+$serie['type']  = "spline";
 $serie['tooltip'] = $tooltip;
 $serie['data']  = $pression;
 array_push($series, $serie);
 
-$serie['name'] = "Eclairement"; 
+$tooltip['valueSuffix'] = " lux";
+$serie['name'] = "Eclairement";
+$serie['type']  = "spline";
 $serie['tooltip'] = $tooltip;
 $serie['data']  = $eclairement;
 array_push($series, $serie);
 
 
-$tooltip[valueSuffix] = " kg";
-$serie['name'] = "Poids"; 
+$tooltip['valueSuffix'] = " g";
+$serie['name'] = "Poids";
+$serie['type']  = "spline";
 $serie['tooltip'] = $tooltip;
 $serie['yAxis']=1;
 $serie['data']  = $poids;
 array_push($series, $serie);
 
-$valeurs['pointStart'] =  2018;
+
 $valeurs['series'] = $series;
 
 echo json_encode($valeurs);
